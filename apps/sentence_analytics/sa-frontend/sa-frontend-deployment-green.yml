@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sa-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sa-frontend
+  template:
+    metadata:
+      labels:
+        app: sa-frontend
+    spec:
+      containers:
+      - image: petrolnt/sentiment-analysis-frontend:green-1
+        imagePullPolicy: Always
+        name: sa-frontend
+        env:
+          - name: SA_WEBAPP_URL
+            value: "http://192.168.49.2:31642/sentiment"
+        ports:
+          - containerPort: 80
+
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1
+  
+
