@@ -1,0 +1,4 @@
+apiVerion: v1
+kind: ServiceAccount
+metadata:
+  name: service-admin

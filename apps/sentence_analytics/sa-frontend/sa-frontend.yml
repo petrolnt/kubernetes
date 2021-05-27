@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sa-frontend
+  labels:
+    app: sa-frontend
+spec:
+  containers:
+    - image: petrolnt/sentiment-analysis-frontend
+      name: sa-frontend
+      ports:
+        - containerPort: 80
+
