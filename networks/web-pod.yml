@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+      name: web
+      
+spec:
+      containers:
+      - name: web
+        image: avtandilko/web:1.0
+        livenessProbe:
+          tcpSocket:
+            port: 8000
+        readinessProbe:
+          httpGet:
+            path: /index.html
+            port: 8000
+        volumeMounts:
+          - name: app
+            mountPath: /app
+      initContainers:
+        - name: html-gen
+          image: busybox:musl
+          command: ['sh', '-c', 'wget -O- https://bit.ly/otus-k8s-index-gen | sh']
+          volumeMounts:
+            - name: app
+              mountPath: /app
+      volumes:
+        - name: app
+          emptyDir: {}
+        
