@@ -29,7 +29,7 @@ cat <<EOF >> /app/index.html
 <h3>Static hosts info</h3>
 <pre>$INFO_HOSTS</pre>
 <h3>Version<h3>
-<pre>2</pre>
+<pre>1</pre>
 </body>
 </html>
 EOF
