@@ -35,7 +35,7 @@ spec:
       initContainers:
         - name: html-gen
           image: busybox:musl
-          command: ['sh', '-c', 'wget -O- https://bit.ly/otus-k8s-index-gen | sh']
+          command: ['sh index.sh']
           volumeMounts:
             - name: app
               mountPath: /app
