@@ -5,9 +5,9 @@ metadata:
 spec:
   selector:
     app: web
+    type: current
   type: ClusterIP
-  clusterIP: None
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 80
+      

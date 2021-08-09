@@ -1,14 +1,11 @@
 #!/bin/sh
 
 INFO_ENV=$(export)
-INFO_MOUNTS=$(mount)
 INFO_RAM=$(free -m)
 INFO_RESOLV=$(cat /etc/resolv.conf)
 INFO_HOSTS=$(cat /etc/hosts)
 
 cat <<EOF >> /app/index.html
-<h3>Mountpoints</h3>
-<pre>$INFO_MOUNTS</pre>
 <h3>Environment</h3>
 <pre>$INFO_ENV</pre>
 <h3>Memory info</h3>

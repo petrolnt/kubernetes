@@ -2,13 +2,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web
+  name: web-canary
 spec:
   replicas: 3
   selector:
     matchLabels:
       app: web
-      type: current
+      type: canary
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -18,11 +18,11 @@ spec:
     metadata:
       labels:
         app: web
-        type: current
+        type: canary
     spec:
       containers:
         - name: web
-          image: petrolnt/web-v1
+          image: petrolnt/web-v1:new
           livenessProbe:
             tcpSocket:
               port: 80
